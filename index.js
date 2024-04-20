@@ -13,23 +13,54 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'q2',
-        message: 'What is Q2?'
+        name: 'description',
+        message: 'Write a description of your project. (What, Why, and How)'
     },
     {
         type: 'input',
-        name: 'q3',
-        message: 'What is Q3?'
+        name: 'install',
+        message: 'What are the steps to install your project?'
     },
     {
         type: 'input',
-        name: 'q4',
-        message: 'What is Q4?'
+        name: 'usage',
+        message: 'Provide instructions and examples of use.'
     },
     {
         type: 'input',
-        name: 'q5',
-        message: 'What is Q5?'
+        name: 'credits',
+        message: 'List your collaborators and their GitHub profiles.'
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'What license are you using for your project?',
+        choices: [
+            "Apache", 
+            "GNU General Public", 
+            "MIT", 
+            "BSD 2-Clause", 
+            "BSD 3-Clause", 
+            "Boost Software", 
+            "Eclipse Public", 
+            "Mozilla Public", 
+            "The Unilicense"
+        ],
+    },
+    {
+        type: 'input',
+        name: 'contribute',
+        message: 'How can other developers contribute?'
+    },
+    {
+        type: 'input',
+        name: 'tests',
+        message: 'Provide examples of how to run any tests you created.'
+    },
+    {
+        type: 'input',
+        name: 'questions',
+        message: 'For application questions, where can you be contacted?'
     },
 
 
