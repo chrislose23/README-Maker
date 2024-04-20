@@ -2,7 +2,7 @@
 const inquirer = require('inquirer');
 const colors = require('colors');
 const fs = require('fs');
-const generateMarkdown = require('generateMarkdown.js');
+const generateMarkdown = require('utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -36,7 +36,15 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+    console.log('README.md has been generated sucessfully!');
+    });
+}
 
 // TODO: Create a function to initialize app
 function init() {}
