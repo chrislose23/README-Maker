@@ -70,8 +70,13 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'questions',
-        message: 'For application questions, where can you be contacted?'
+        name: 'github',
+        message: 'What is the link to your GitHub Repo?'
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email address?'
     },
     {
         type: 'input',

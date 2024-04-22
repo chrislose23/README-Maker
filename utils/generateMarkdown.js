@@ -131,9 +131,12 @@ function generateMarkdown(data) {
   if (data.tests) {
       markdownContent += `## Tests\n\n${data.tests}\n\n`;
   }
-  if (data.questions) {
-      markdownContent += `## Questions\n\n${data.questions}\n\n`;
+  if (data.github) {
+      markdownContent += `## Questions\n\n[My GitHub Repo](${data.github})\n`;
   }
+  if (data.email) {
+    markdownContent += `My Email Address${data.email}\n\n`;
+}
 
   return markdownContent;
 }
