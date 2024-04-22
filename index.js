@@ -38,30 +38,6 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'usageInputs',
-        message: 'Provide instructions for usage:',
-    },
-    {
-        type: 'input',
-        name: 'usageScreenshot',
-        message: 'Provide a screenshot link:',
-        when: (answers) => answers.usageInputs !== undefined, // Only ask for a screenshot if usage input is provided
-    },
-    {
-        type: 'confirm',
-        name: 'addMoreUsage',
-        message: 'Do you want to add another usage input and screenshot?',
-        default: false,
-        when: (answers) => answers.usageInputs !== undefined, // Only ask if usage input is provided
-    },
-    {
-        type: 'input',
-        name: 'screenshot',
-        message: 'Provide a screenshot link:',
-        when: (answers) => answers.usage !== undefined,
-    },
-    {
-        type: 'input',
         name: 'credits',
         message: 'List your collaborators and their GitHub profiles.'
     },
@@ -96,6 +72,24 @@ const questions = [
         type: 'input',
         name: 'questions',
         message: 'For application questions, where can you be contacted?'
+    },
+    {
+        type: 'input',
+        name: 'usageInputs',
+        message: 'Provide instructions for usage:',
+    },
+    {
+        type: 'input',
+        name: 'usageScreenshot',
+        message: 'Provide a screenshot link:',
+        when: (answers) => answers.usageInputs !== undefined,
+    },
+    {
+        type: 'confirm',
+        name: 'addMoreUsage',
+        message: 'Do you want to add another usage input and screenshot?',
+        default: false,
+        when: (answers) => answers.usageInputs !== undefined, // Only ask if usage input is provided
     },
 
 
