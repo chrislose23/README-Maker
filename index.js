@@ -24,7 +24,6 @@ const questions = [
             "MySQL", 
             "NoSQL", 
             "React", 
-            ""
         ],
     },
     {
@@ -41,6 +40,12 @@ const questions = [
         type: 'input',
         name: 'usage',
         message: 'Provide instructions and examples of use.'
+    },
+    {
+        type: 'input',
+        name: 'screenshot',
+        message: 'Provide a screenshot link:',
+        when: (answers) => answers.usage !== undefined,
     },
     {
         type: 'input',
@@ -97,6 +102,9 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then((answers) => {
+        if (answers.usage && answers.screenshot) {
+            answers.usage = `${answers.usage}\n\n![Screenshot](${answers.screenshot})`;
+        }
         const markdown = generateMarkdown(answers);
         writeToFile('README.md', markdown)
     });
