@@ -65,9 +65,9 @@ function generateMarkdown(data) {
 
   ## Description
     
-  ${data.description}
-    
   ${licenseBadge} ${licenseLink}
+
+  ${data.description}
 
   ## Table of Contents
 
