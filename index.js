@@ -12,6 +12,22 @@ const questions = [
         message: 'What is the project title?'
     },
     {
+        type: 'checkbox',
+        name: 'badges',
+        message: 'What code does your project utilize?',
+        choices: [
+            "HTML", 
+            "CSS", 
+            "JavaScript", 
+            "Node.js", 
+            "Express.js", 
+            "MySQL", 
+            "NoSQL", 
+            "React", 
+            ""
+        ],
+    },
+    {
         type: 'input',
         name: 'description',
         message: 'Write a description of your project. (What, Why, and How)'

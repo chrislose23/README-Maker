@@ -56,50 +56,69 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  const licenseBadge = renderLicenseBadge(data.license);
-  const licenseLink = renderLicenseLink(data.license);
-  const licenseSection = renderLicenseSection(data.license);
+  // Initialize the Table of Contents string
+  let tableOfContents = '## Table of Contents\n\n';
 
+  // Check if each section has data and add it to the Table of Contents
+  if (data.description) {
+      tableOfContents += '- [Description](#description)\n';
+  }
+  if (data.install) {
+      tableOfContents += '- [Installation](#installation)\n';
+  }
+  if (data.usage) {
+      tableOfContents += '- [Usage](#usage)\n';
+  }
+  if (data.credits) {
+      tableOfContents += '- [Credits](#credits)\n';
+  }
+  if (data.license) {
+      tableOfContents += '- [License](#license)\n';
+  }
+  if (data.contribute) {
+      tableOfContents += '- [Contributing](#contributing)\n';
+  }
+  if (data.tests) {
+      tableOfContents += '- [Tests](#tests)\n';
+  }
+  if (data.questions) {
+      tableOfContents += '- [Questions](#questions)\n\n';
+  }
 
-  return `# ${data.title}
+  // Generate the markdown content with the dynamic Table of Contents
+  let markdownContent = `# ${data.title}\n\n${tableOfContents}`;
 
-  ## Description
-    
-  ${licenseBadge} ${licenseLink}
+  // Add other sections based on user input
+  if (data.description) {
+      const licenseBadge = renderLicenseBadge(data.license);
+      markdownContent += `## Description\n\n${licenseBadge}\n\n${data.description}\n\n`;
+  }
+  if (data.install) {
+      markdownContent += `## Installation\n\n${data.install}\n\n`;
+  }
+  if (data.usage) {
+      markdownContent += `## Usage\n\n${data.usage}\n\n`;
+  }
+  if (data.credits) {
+      markdownContent += `## Credits\n\n${data.credits}\n\n`;
+  }
+  if (data.license) {
+      const licenseBadge = renderLicenseBadge(data.license);
+      const licenseLink = renderLicenseLink(data.license);
+      const licenseSection = renderLicenseSection(data.license);
+      markdownContent += `## License\n\n${licenseSection}\n\n`;
+  }
+  if (data.contribute) {
+      markdownContent += `## Contributing\n\n${data.contribute}\n\n`;
+  }
+  if (data.tests) {
+      markdownContent += `## Tests\n\n${data.tests}\n\n`;
+  }
+  if (data.questions) {
+      markdownContent += `## Questions\n\n${data.questions}\n\n`;
+  }
 
-  ${data.description}
-
-  ## Table of Contents
-
-  ${data.contents}
-
-  ## Installation
-
-  ${data.install}
-
-  ## Usage
-
-  ${data.usage}
-
-  ## Credits
-
-  ${data.credits}
-
-  ${licenseSection}
-
-  ## Contributing
-
-  ${data.contribute}
-
-  ## Tests
-
-  ${data.tests}
-
-  ## Questions
-
-  ${data.questions}
-
-`;
+  return markdownContent;
 }
 
 module.exports = generateMarkdown;
