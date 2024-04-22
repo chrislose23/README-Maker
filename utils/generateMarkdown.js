@@ -106,7 +106,7 @@ function generateMarkdown(data) {
       const licenseBadge = renderLicenseBadge(data.license);
       const licenseLink = renderLicenseLink(data.license);
       const licenseSection = renderLicenseSection(data.license);
-      markdownContent += `## License\n\n${licenseSection}\n\n`;
+      markdownContent += `${licenseSection}\n\n`;
   }
   if (data.contribute) {
       markdownContent += `## Contributing\n\n${data.contribute}\n\n`;
