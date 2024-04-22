@@ -82,7 +82,7 @@ function generateMarkdown(data) {
   if (data.install) {
       tableOfContents += '- [Installation](#installation)\n';
   }
-  if (data.usage) {
+  if (data.usageInputs) {
       tableOfContents += '- [Usage](#usage)\n';
   }
   if (data.credits) {
@@ -113,8 +113,8 @@ function generateMarkdown(data) {
   if (data.install) {
       markdownContent += `## Installation\n\n${data.install}\n\n`;
   }
-  if (data.usage) {
-      markdownContent += `## Usage\n\n${data.usage}\n\n`;
+  if (data.usageInputs) {
+      markdownContent += `## Usage\n\n${data.usageInputs}\n\n`;
   }
   if (data.credits) {
       markdownContent += `## Credits\n\n${data.credits}\n\n`;

@@ -38,8 +38,21 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'usage',
-        message: 'Provide instructions and examples of use.'
+        name: 'usageInputs',
+        message: 'Provide instructions for usage:',
+    },
+    {
+        type: 'input',
+        name: 'usageScreenshot',
+        message: 'Provide a screenshot link:',
+        when: (answers) => answers.usageInputs !== undefined, // Only ask for a screenshot if usage input is provided
+    },
+    {
+        type: 'confirm',
+        name: 'addMoreUsage',
+        message: 'Do you want to add another usage input and screenshot?',
+        default: false,
+        when: (answers) => answers.usageInputs !== undefined, // Only ask if usage input is provided
     },
     {
         type: 'input',
@@ -102,11 +115,50 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then((answers) => {
-        if (answers.usage && answers.screenshot) {
-            answers.usage = `${answers.usage}\n\n![Screenshot](${answers.screenshot})`;
+        if (answers.usageInputs && answers.usageScreenshot) {
+            answers.usageInputs = `${answers.usageInputs}\n\n![Screenshot](${answers.usageScreenshot})`;
         }
+
+        function askAdditionalUsage() {
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'usageInputs',
+                    message: 'Provide instructions for usage:',
+                },
+                {
+                    type: 'input',
+                    name: 'usageScreenshot',
+                    message: 'Provide a screenshot link:',
+                },
+                {
+                    type: 'confirm',
+                    name: 'addMoreUsage',
+                    message: 'Do you want to add another usage input and screenshot?',
+                    default: false,
+                },
+            ]).then((additionalAnswers) => {
+                // If usage inputs and screenshot are provided, combine them into a single string
+                if (additionalAnswers.usageInputs && additionalAnswers.usageScreenshot) {
+                    answers.usageInputs += `\n\n${additionalAnswers.usageInputs}\n\n![Screenshot](${additionalAnswers.usageScreenshot})`;
+                }
+                if (additionalAnswers.addMoreUsage) {
+                    askAdditionalUsage(); // Recursive call to continue asking for more
+                } else {
+                    // After all additional usage inputs and screenshots are collected, proceed with the remaining questions
+                    const markdown = generateMarkdown(answers);
+                    writeToFile('README.md', markdown);
+                }
+            });
+        }
+
+        // Start asking for additional usage inputs and screenshots
+        if (answers.addMoreUsage) {
+            askAdditionalUsage();
+        } else {
         const markdown = generateMarkdown(answers);
-        writeToFile('README.md', markdown)
+        writeToFile('README.md', markdown);
+        }
     });
 }
 
