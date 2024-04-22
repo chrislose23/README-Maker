@@ -106,9 +106,9 @@ function generateMarkdown(data) {
 
   // Add other sections based on user input
   
-  if (data.description) {
+  if (badgeURLs.length > 0) {
       const licenseBadge = renderLicenseBadge(data.license);
-      markdownContent += `## Description\n\n${badgeURLs}${licenseBadge}\n\n${data.description}\n\n`;
+      markdownContent += `## Description\n\n${badgeURLs.join(' ')} ${licenseBadge}\n\n${data.description}\n\n`;
   }
   if (data.install) {
       markdownContent += `## Installation\n\n${data.install}\n\n`;
