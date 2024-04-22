@@ -33,7 +33,7 @@ function getLicenseSection(license) {
 
 function generateBadgeURLs(choices) {
   const badgeURLs = {
-      'HTML': 'https://img.shields.io/badge/HTML-5-blue',
+      'HTML': 'https://img.shields.io/badge/HTML-5-green',
       'CSS': 'https://img.shields.io/badge/CSS-3-blue',
       'JavaScript': 'https://img.shields.io/badge/JavaScript-ES6-yellow',
       'Node.js': 'https://img.shields.io/badge/Node.js-14.x-green',
@@ -97,7 +97,7 @@ function generateMarkdown(data) {
   if (data.tests) {
       tableOfContents += '- [Tests](#tests)\n';
   }
-  if (data.questions) {
+  if (data.github) {
       tableOfContents += '- [Questions](#questions)\n\n';
   }
 
