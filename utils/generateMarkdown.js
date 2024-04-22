@@ -31,7 +31,22 @@ function getLicenseSection(license) {
   return licenseSections[license] || '';
 }
 
+function generateBadgeURLs(choices) {
+  const badgeURLs = {
+      'HTML': 'https://img.shields.io/badge/HTML-5-blue',
+      'CSS': 'https://img.shields.io/badge/CSS-3-blue',
+      'JavaScript': 'https://img.shields.io/badge/JavaScript-ES6-yellow',
+      'Node.js': 'https://img.shields.io/badge/Node.js-14.x-green',
+      'Express.js': 'https://img.shields.io/badge/Express.js-4.x-lightgrey',
+      'MySQL': 'https://img.shields.io/badge/MySQL-8.x-blue',
+      'NoSQL': 'https://img.shields.io/badge/NoSQL-MongoDB-green',
+      'React': 'https://img.shields.io/badge/React-17.x-blue',
+  };
 
+  return choices.filter(choice => choice && badgeURLs[choice]).map(choice => {
+    return `![${choice}](https://img.shields.io/badge/${encodeURIComponent(choice)}-blue)`;
+  });
+}
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
@@ -57,6 +72,7 @@ function renderLicenseSection(license) {
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   // Initialize the Table of Contents string
+  const badgeURLs = generateBadgeURLs(data.badges);
   let tableOfContents = '## Table of Contents\n\n';
 
   // Check if each section has data and add it to the Table of Contents
@@ -89,9 +105,10 @@ function generateMarkdown(data) {
   let markdownContent = `# ${data.title}\n\n${tableOfContents}`;
 
   // Add other sections based on user input
+  
   if (data.description) {
       const licenseBadge = renderLicenseBadge(data.license);
-      markdownContent += `## Description\n\n${licenseBadge}\n\n${data.description}\n\n`;
+      markdownContent += `## Description\n\n${badgeURLs}${licenseBadge}\n\n${data.description}\n\n`;
   }
   if (data.install) {
       markdownContent += `## Installation\n\n${data.install}\n\n`;

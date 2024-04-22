@@ -1,4 +1,4 @@
-# sdfsdf
+# fsdfsdf
 
 ## Table of Contents
 
@@ -13,21 +13,21 @@
 
 ## Description
 
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+![HTML](https://img.shields.io/badge/HTML-blue),![CSS](https://img.shields.io/badge/CSS-blue),![JavaScript](https://img.shields.io/badge/JavaScript-blue),![Node.js](https://img.shields.io/badge/Node.js-blue),![Express.js](https://img.shields.io/badge/Express.js-blue),![MySQL](https://img.shields.io/badge/MySQL-blue),![NoSQL](https://img.shields.io/badge/NoSQL-blue),![React](https://img.shields.io/badge/React-blue)![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-dsfs
+sfsfdsf
 
 ## Installation
 
-sdfsdf
+sdfsdff
 
 ## Usage
 
-sdfsf
+dsfsdfsf
 
 ## Credits
 
-sdfsf
+sdfsfsdf
 
 ## License
 
@@ -35,7 +35,7 @@ Licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Contributing
 
-sdf 
+sfsf
 
 ## Tests
 
@@ -43,5 +43,5 @@ sdfsdf
 
 ## Questions
 
-dsfsf
+sdfsdf
 
