@@ -73,7 +73,7 @@ function writeToFile(fileName, data) {
             console.error(err);
             return;
         }
-    console.log('README.md has been generated sucessfully!');
+    console.log(colors.green('README.md has been generated sucessfully!'));
     });
 }
 
