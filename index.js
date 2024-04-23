@@ -54,7 +54,7 @@ const questions = [
             colors.yellow("Mozilla Public"), 
             colors.yellow("The Unilicense"),
             ""
-        ],
+        ]
     },
     {
         type: 'input',

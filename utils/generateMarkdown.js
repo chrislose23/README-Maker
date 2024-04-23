@@ -135,8 +135,8 @@ function generateMarkdown(data) {
       markdownContent += `## Credits\n\n${data.credits}\n\n`;
   }
   if (data.license) {
-      const licenseBadge = renderLicenseBadge(data.license);
-      const licenseLink = renderLicenseLink(data.license);
+    //   const licenseBadge = renderLicenseBadge(data.license);
+    //   const licenseLink = renderLicenseLink(data.license);
       const licenseSection = renderLicenseSection(data.license);
       markdownContent += `${licenseSection}\n\n`;
   }
