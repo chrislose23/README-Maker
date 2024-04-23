@@ -7,98 +7,97 @@ const questions = [
     {
         type: 'input',
         name: 'title',
-        message: 'What is the project title?'
+        message: colors.magenta('What is the project title?')
     },
     {
         type: 'checkbox',
         name: 'badges',
-        message: 'What code does your project utilize?',
+        message: colors.magenta('What code does your project utilize?'),
         choices: [
-            "HTML", 
-            "CSS", 
-            "JavaScript", 
-            "Node.js", 
-            "Express.js", 
-            "MySQL", 
-            "NoSQL", 
-            "React", 
+            colors.yellow("HTML"), 
+            colors.yellow("CSS"), 
+            colors.yellow("JavaScript"), 
+            colors.yellow("Node.js"), 
+            colors.yellow("Express.js"), 
+            colors.yellow("MySQL"), 
+            colors.yellow("NoSQL"), 
+            colors.yellow("React"), 
         ],
     },
     {
         type: 'input',
         name: 'description',
-        message: 'Write a description of your project. (What, Why, and How)'
+        message: colors.magenta('Write a description of your project. (What, Why, and How)')
     },
     {
         type: 'input',
         name: 'install',
-        message: 'What are the steps to install your project?'
+        message: colors.magenta('What are the steps to install your project?')
     },
     {
         type: 'input',
         name: 'credits',
-        message: 'List your collaborators and their GitHub profiles.'
+        message: colors.magenta('List your collaborators and their GitHub profiles.')
     },
     {
         type: 'list',
         name: 'license',
-        message: 'What license are you using for your project?',
+        message: colors.magenta('What license are you using for your project?'),
         choices: [
-            "Apache", 
-            "GNU General Public", 
-            "MIT", 
-            "BSD 2-Clause", 
-            "BSD 3-Clause", 
-            "Boost Software", 
-            "Eclipse Public", 
-            "Mozilla Public", 
-            "The Unilicense",
+            colors.yellow("Apache"), 
+            colors.yellow("GNU General Public"), 
+            colors.yellow("MIT"), 
+            colors.yellow("BSD 2-Clause"), 
+            colors.yellow("BSD 3-Clause"), 
+            colors.yellow("Boost Software"), 
+            colors.yellow("Eclipse Public"), 
+            colors.yellow("Mozilla Public"), 
+            colors.yellow("The Unilicense"),
             ""
         ],
     },
     {
         type: 'input',
         name: 'contribute',
-        message: 'How can other developers contribute?'
+        message: colors.magenta('How can other developers contribute?')
     },
     {
         type: 'input',
         name: 'tests',
-        message: 'Provide examples of how to run any tests you created.'
+        message: colors.magenta('Provide examples of how to run any tests you created.')
     },
     {
         type: 'input',
         name: 'github',
-        message: 'What is the link to your GitHub Repo?'
+        message: colors.magenta('What is the link to your GitHub Repo?')
     },
     {
         type: 'input',
         name: 'email',
-        message: 'What is your email address?'
+        message: colors.magenta('What is your email address?')
     },
     {
         type: 'input',
         name: 'usageInputs',
-        message: 'Provide instructions for usage:',
+        message: colors.magenta('Provide instructions for usage:'),
     },
     {
         type: 'input',
         name: 'usageScreenshot',
-        message: 'Provide a screenshot link:',
+        message: colors.magenta('Provide a screenshot link:'),
         when: (answers) => answers.usageInputs !== undefined,
     },
     {
         type: 'confirm',
         name: 'addMoreUsage',
-        message: 'Do you want to add another usage input and screenshot?',
+        message: colors.magenta('Do you want to add another usage input and screenshot?'),
         default: false,
-        when: (answers) => answers.usageInputs !== undefined, // Only ask if usage input is provided
+        when: (answers) => answers.usageInputs !== undefined,
     },
 
 
 ];
 
-// TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) => {
         if (err) {
@@ -109,7 +108,6 @@ function writeToFile(fileName, data) {
     });
 }
 
-// TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then((answers) => {
         if (answers.usageInputs && answers.usageScreenshot) {
@@ -121,35 +119,34 @@ function init() {
                 {
                     type: 'input',
                     name: 'usageInputs',
-                    message: 'Provide instructions for usage:',
+                    message: colors.magenta('Provide instructions for usage:'),
                 },
                 {
                     type: 'input',
                     name: 'usageScreenshot',
-                    message: 'Provide a screenshot link:',
+                    message: colors.magenta('Provide a screenshot link:'),
                 },
                 {
                     type: 'confirm',
                     name: 'addMoreUsage',
-                    message: 'Do you want to add another usage input and screenshot?',
+                    message: colors.magenta('Do you want to add another usage input and screenshot?'),
                     default: false,
                 },
             ]).then((additionalAnswers) => {
-                // If usage inputs and screenshot are provided, combine them into a single string
+                
                 if (additionalAnswers.usageInputs && additionalAnswers.usageScreenshot) {
                     answers.usageInputs += `\n\n${additionalAnswers.usageInputs}\n\n![Screenshot](${additionalAnswers.usageScreenshot})`;
                 }
                 if (additionalAnswers.addMoreUsage) {
-                    askAdditionalUsage(); // Recursive call to continue asking for more
+                    askAdditionalUsage();
                 } else {
-                    // After all additional usage inputs and screenshots are collected, proceed with the remaining questions
+                    
                     const markdown = generateMarkdown(answers);
                     writeToFile('README.md', markdown);
                 }
             });
         }
 
-        // Start asking for additional usage inputs and screenshots
         if (answers.addMoreUsage) {
             askAdditionalUsage();
         } else {
@@ -159,5 +156,4 @@ function init() {
     });
 }
 
-// Function call to initialize app
 init();

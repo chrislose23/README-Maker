@@ -1,9 +1,14 @@
 function getBadgeURL(license) {
   const licenseBadges = {
-      'Apache': 'https://img.shields.io/badge/License-Apache%202.0-blue.svg',
-      'GNU General Public': 'https://img.shields.io/badge/License-GPL%20v3-blue.svg',
-      'MIT': 'https://img.shields.io/badge/License-MIT-yellow.svg',
-      // Add URLs for other licenses
+    'Apache': 'https://img.shields.io/badge/License-Apache%202.0-blue.svg',
+    'GNU General Public': 'https://img.shields.io/badge/License-GPL%20v3-blue.svg',
+    'MIT': 'https://img.shields.io/badge/License-MIT-yellow.svg',
+    'BSD 2-Clause': 'https://img.shields.io/badge/License-BSD%202--Clause-orange.svg',
+    'BSD 3-Clause': 'https://img.shields.io/badge/License-BSD%203--Clause-blue.svg',
+    'Boost Software': 'https://img.shields.io/badge/License-Boost%201.0-lightblue.svg',
+    'Eclipse Public': 'https://img.shields.io/badge/License-EPL%201.0-red.svg',
+    'Mozilla Public': 'https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg',
+    'The Unilicense': 'https://img.shields.io/badge/license-Unlicense-blue.svg',
   };
 
   return licenseBadges[license] || '';
@@ -11,10 +16,15 @@ function getBadgeURL(license) {
 
 function getLicenseLinkURL(license) {
   const licenseLinks = {
-      'Apache': 'https://opensource.org/licenses/Apache-2.0',
-      'GNU General Public': 'https://www.gnu.org/licenses/gpl-3.0',
-      'MIT': 'https://opensource.org/licenses/MIT',
-      // Add URLs for other licenses
+    'Apache': 'https://opensource.org/licenses/Apache-2.0',
+    'GNU General Public': 'https://www.gnu.org/licenses/gpl-3.0',
+    'MIT': 'https://opensource.org/licenses/MIT',
+    'BSD 2-Clause': 'https://opensource.org/licenses/BSD-2-Clause',
+    'BSD 3-Clause': 'https://opensource.org/licenses/BSD-3-Clause',
+    'Boost Software': 'https://opensource.org/licenses/BSL-1.0',
+    'Eclipse Public': 'https://opensource.org/licenses/EPL-1.0',
+    'Mozilla Public': 'https://opensource.org/licenses/MPL-2.0',
+    'The Unilicense': 'https://unlicense.org/',
   };
 
   return licenseLinks[license] || '';
@@ -22,10 +32,15 @@ function getLicenseLinkURL(license) {
 
 function getLicenseSection(license) {
   const licenseSections = {
-      'Apache': 'Licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).',
-      'GNU General Public': 'Licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0).',
-      'MIT': 'Licensed under the [MIT License](https://opensource.org/licenses/MIT).',
-      // Add section content for other licenses
+    'Apache': 'Licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).',
+    'GNU General Public': 'Licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0).',
+    'MIT': 'Licensed under the [MIT License](https://opensource.org/licenses/MIT).',
+    'BSD 2-Clause': 'Licensed under the [BSD 2-Clause License](https://opensource.org/licenses/BSD-2-Clause).',
+    'BSD 3-Clause': 'Licensed under the [BSD 3-Clause License](https://opensource.org/licenses/BSD-3-Clause).',
+    'Boost Software': 'Licensed under the [Boost Software License 1.0](https://opensource.org/licenses/BSL-1.0).',
+    'Eclipse Public': 'Licensed under the [Eclipse Public License 1.0](https://opensource.org/licenses/EPL-1.0).',
+    'Mozilla Public': 'Licensed under the [Mozilla Public License 2.0](https://opensource.org/licenses/MPL-2.0).',
+    'The Unilicense': 'Licensed under the [Unlicense](https://unlicense.org/).',
   };
 
   return licenseSections[license] || '';
