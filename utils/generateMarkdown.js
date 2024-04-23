@@ -63,34 +63,25 @@ function generateBadgeURLs(choices) {
   });
 }
 
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
 function renderLicenseBadge(license) {
   const badgeURL = getBadgeURL(license);
   return badgeURL ? `![License](${badgeURL})` : '';
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
 function renderLicenseLink(license) {
   const linkURL = getLicenseLinkURL(license);
   return linkURL ? `[${license} License](${linkURL})` : '';
   }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
 function renderLicenseSection(license) {
   const sectionContent = getLicenseSection(license);
   return sectionContent ? `## License\n\n${sectionContent}` : '';
 }
 
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  // Initialize the Table of Contents string
   const badgeURLs = generateBadgeURLs(data.badges);
   let tableOfContents = '## Table of Contents\n\n';
 
-  // Check if each section has data and add it to the Table of Contents
   if (data.description) {
       tableOfContents += '- [Description](#description)\n';
   }
@@ -116,10 +107,8 @@ function generateMarkdown(data) {
       tableOfContents += '- [Questions](#questions)\n\n';
   }
 
-  // Generate the markdown content with the dynamic Table of Contents
   let markdownContent = `# ${data.title}\n\n${tableOfContents}`;
 
-  // Add other sections based on user input
   
   if (badgeURLs.length > 0) {
       const licenseBadge = renderLicenseBadge(data.license);
@@ -135,8 +124,6 @@ function generateMarkdown(data) {
       markdownContent += `## Credits\n\n${data.credits}\n\n`;
   }
   if (data.license) {
-    //   const licenseBadge = renderLicenseBadge(data.license);
-    //   const licenseLink = renderLicenseLink(data.license);
       const licenseSection = renderLicenseSection(data.license);
       markdownContent += `${licenseSection}\n\n`;
   }
