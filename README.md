@@ -44,6 +44,10 @@ If correctly completed, you will see a green success message and your README.md 
 
 ![Screenshot](/images/ss6.png)
 
+Here is a link to a video walkthrough:
+
+[Walkthrough Video](https://app.screencastify.com/v3/watch/raSbqzqsejifQhfUSm3K)
+
 ## License
 
 Licensed under the [MIT License](https://opensource.org/licenses/MIT).
